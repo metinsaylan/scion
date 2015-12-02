@@ -1,0 +1,6 @@
+length	 : 	3.4 [m]
+width	 : 	1.2 [m]
+height	 : 	0.8 [m]
+speed	 : 	2.2 [m/s]
+rpm	 : 	2500 @ speed [1/m]
+area	 : 	4.08 [m2]
