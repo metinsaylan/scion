@@ -10,7 +10,6 @@ C:\Users\matt\Github\scion\vbnet\scon\obj\Debug\scion.pdb
 C:\Users\matt\Github\scion\vbnet\scion\bin\Debug\scion.dll
 C:\Users\matt\Github\scion\vbnet\scion\bin\Debug\scion.pdb
 C:\Users\matt\Github\scion\vbnet\scion\bin\Debug\scion.xml
-C:\Users\matt\Github\scion\vbnet\scion\obj\Debug\scion.vbprojResolveAssemblyReference.cache
 C:\Users\matt\Github\scion\vbnet\scion\obj\Debug\scion.Resources.resources
 C:\Users\matt\Github\scion\vbnet\scion\obj\Debug\scion.vbproj.GenerateResource.Cache
 C:\Users\matt\Github\scion\vbnet\scion\obj\Debug\scion.dll

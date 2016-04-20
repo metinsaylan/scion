@@ -1,8 +1,8 @@
 ﻿Public Class scionReader
 
-    Public Shared Function Read(path As String) As scion
+    Public Shared Function Read(path As String) As scionData
 
-        Dim sc As New scion
+        Dim sc As New scionData
 
         If IO.File.Exists(path) Then
 
@@ -25,7 +25,7 @@
                     Dim includeFile As String = line.Split({""""}, StringSplitOptions.RemoveEmptyEntries)(1)
 
                     If IO.File.Exists(includeFile) Then
-                        Dim inc As scion = scionReader.Read(includeFile)
+                        Dim inc As scionData = scionReader.Read(includeFile)
 
                         For Each item In inc
                             sc.Add(item.Key, item.Value)
@@ -57,31 +57,37 @@
 
                         sf.Key = data(0)
 
-                        If data(3).StartsWith("[") Then
-                            ' displacement 	: 2530	[tons]  
+                        If data.Count > 2 Then
 
+                            If data(3).StartsWith("@") Then
+                                ' range			: 2500  @       speed_eco	[nm]
+
+                                sf.Value = data(2)
+                                sf.Unit = data(5)
+
+                                sf.HasCondition = True
+                                sf.ConditionKey = data(4)
+
+                            ElseIf data(3).StartsWith("-") Then
+                                ' speed         : 7     -       12          [kn]    > variable with limits
+
+                                sf.Value = data(2)
+                                sf.Unit = data(5)
+
+                                sf.IsRange = True
+                                sf.UpperLimit = data(4)
+
+                            Else
+                                ' displacement 	: 2530	[tons]  
+
+                                sf.Value = data(2)
+                                sf.Unit = data(3)
+
+                            End If
+                        Else
                             sf.Value = data(2)
-                            sf.Unit = data(3)
-
-                        ElseIf data(3).StartsWith("@") Then
-                            ' range			: 2500  @       speed_eco	[nm]
-
-                            sf.Value = data(2)
-                            sf.Unit = data(5)
-
-                            sf.HasCondition = True
-                            sf.ConditionKey = data(4)
-
-                        ElseIf data(3).StartsWith("-") Then
-                            ' speed         : 7     -       12          [kn]    > variable with limits
-
-                            sf.Value = data(2)
-                            sf.Unit = data(5)
-
-                            sf.IsRange = True
-                            sf.UpperLimit = data(4)
-
                         End If
+
                     Else
 
                         ' String value can contain spaces etc.

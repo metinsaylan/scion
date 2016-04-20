@@ -2,7 +2,7 @@
 
 Public Class scionWriter
 
-    Public Shared Sub WriteScon(path As String, data As scion)
+    Public Shared Sub WriteScon(path As String, data As scionData)
 
         Dim lines As New List(Of String)
 
